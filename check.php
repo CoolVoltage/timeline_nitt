@@ -35,7 +35,7 @@ print_r($_FILES);
 			echo "Please Fill in All Details";
 			die();
     }else{
-	    $con = mysqli_connect('localhost','root','pass','timeline');
+	    $con = mysqli_connect($dbHost,$dbUser,$dbPass,$dbName);
 	    $result = mysqli_query($con,"INSERT INTO `content_data`(`content_title`, `content_desc`, `content_start`, `content_end`, `content_revision_history`, `content_updated_by`, `content_modified_on`, `content_created_on`) VALUES ('{$title}','{$descp}','{$sdate}','{$edate}','1','1','{$edate}','{$edate}')") or die(mysqli_error($con));
 	    $content_id = mysqli_insert_id($con);
 	    $result = mysqli_query($con,"INSERT INTO `timeline_tags`(`tag_name`,`tag_description`) VALUES('{$prim}','primary')");
